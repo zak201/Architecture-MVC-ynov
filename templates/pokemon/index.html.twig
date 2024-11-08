@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Pokémon{% endblock %}
+
+{% block body %}
+    <h1>Liste des Pokémon</h1>
+    {{ dump(pokemons) }}
+
+    {% if pokemons is empty %}
+        <p>Aucun Pokémon trouvé</p>
+    {% else %}
+        <ul>
+            {% for pokemon in pokemons %}
+                <li><strong>{{ pokemon.name }}</strong> - Type : {{ pokemon.type }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
