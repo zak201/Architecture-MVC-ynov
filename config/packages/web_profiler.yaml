@@ -4,9 +4,8 @@ when@dev:
         intercept_redirects: false
 
     framework:
-        profiler:
-            only_exceptions: false
-            collect_serializer_data: true
+        profiler: { enabled: true }
+
 
 when@test:
     web_profiler:

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un Pokémon{% endblock %}
+
+{% block body %}
+    <h1>Créer un Pokémon</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Créer</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('pokemon_list') }}">Retour à la liste des Pokémon</a>
+{% endblock %}

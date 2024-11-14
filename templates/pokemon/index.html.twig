@@ -4,16 +4,29 @@
 
 {% block body %}
     <h1>Liste des Pokémon</h1>
-    {{ dump(pokemons) }}
 
-    {% if pokemons is empty %}
+    {% if pagination is empty %}
         <p>Aucun Pokémon trouvé</p>
     {% else %}
         <ul>
-            {% for pokemon in pokemons %}
-                <li><strong>{{ pokemon.name }}</strong> - Type : {{ pokemon.type }}</li>
+            {% for pokemon in pagination %}
+                <li>
+                    <strong>
+                        <a href="{{ path('pokemon_show', { id: pokemon.id }) }}">{{ pokemon.name }}</a>
+                    </strong> -
+                    <a href="{{ path('pokemon_edit', { id: pokemon.id }) }}" class="btn btn-secondary">Modifier</a>
+                    <form action="{{ path('pokemon_delete', { id: pokemon.id }) }}" method="post" style="display:inline;">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </li>
             {% endfor %}
         </ul>
+
+        <div class="pagination">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     {% endif %}
 
+    <a href="{{ path('pokemon_new') }}" class="btn btn-primary">Ajouter un Pokémon</a>
 {% endblock %}

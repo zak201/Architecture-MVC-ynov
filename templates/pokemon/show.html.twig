@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ pokemon.name }}</h1>
+    <p>Type : {{ pokemon.type }}</p>
+    <p>Niveau : {{ pokemon.level }}</p>
+    <p>Expérience : {{ pokemon.experience }}</p>
+
+    <a href="{{ path('pokemon_edit', {id: pokemon.id}) }}">Modifier</a>
+    <a href="{{ path('pokemon_delete', {id: pokemon.id}) }}" onclick="return confirm('Êtes-vous sûr ?');">Supprimer</a>
+{% endblock %}
